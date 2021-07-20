@@ -82,20 +82,17 @@ class Asset {
 	public static function add( $type, $data = array() ) {
 
 		$is_admin = is_admin();
-
 		if ( self::validate( $type, $data, $is_admin ) ) {
 
-			$hook = $is_admin ? 'admin_enqueue_scripts' : 'wp_enqueue_scripts';
-
+			$hook   = $is_admin ? 'admin_enqueue_scripts' : 'wp_enqueue_scripts';
 			$method = __CLASS__ . "::add_{$type}s";
 
 			if ( has_action( $hook, $method ) === false ) {
 				add_action( $hook, $method );
 			}
-
+			
 			return true;
 		}
-
 		return false;
 	}
 
@@ -117,7 +114,6 @@ class Asset {
 		self::look_if_process_files( 'script' );
 
 		foreach ( self::$data['script'] as $data ) {
-
 			if ( $data['ajax'] ) {
 				$params = array(
 					'ajax_url'   => admin_url( '/admin-ajax.php' ) . '?action=' . $data['name'],
@@ -256,7 +252,7 @@ class Asset {
 
 		$place = ( $data['admin'] ) ? true : false;
 
-		$place = $admin && $place || ! $admin && !$place;
+		$place = $admin && $place || ! $admin && ! $place;
 
 		if ( ! $place || self::set_params( $type, $data ) === false ) {
 			return false;
@@ -406,7 +402,7 @@ class Asset {
 	 *
 	 * @param string $url → file url.
 	 *
-	 * @return string → filepath
+	 * @return string �� filepath
 	 */
 	protected static function get_path_from_url( $url ) {
 
