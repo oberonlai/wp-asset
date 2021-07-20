@@ -74,10 +74,10 @@ Asset::addStyle(
 ## Avaiable Attributes
 
 key | Description | Type | Required | Default
---------------|:------------|:-----:|:----:|------------------------
+:--------------|:------------|:-----:|:----:|------------------------
 name | Unique ID | string | Yes	
 url	| Url to file |string | Yes	
-admin | Attach in admin | bollean | No | false
+admin | Attach in admin | boolean | No | false
 deps | Dependences | array | No | 
 version | Version | string | No | false
 footer | Attach in footer ( scripts only ) | boolean | No | true
