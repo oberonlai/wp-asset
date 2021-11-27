@@ -46,28 +46,35 @@ require __DIR__ . '/vendor/autoload.php';
 
 use ODS\Asset;
 
-Asset::addScript(
-	array(
-		'name'    => 'my_script',
-		'url'     => YOUR_PLUGIN_URL . 'assets/js/script.js',
-		'deps'    => array( 'jquery' ),
-		'version' => YOUR_PLUGIN_VERSION,
-		'footer'  => true,
-		'ajax'    => false,
-		'admin'   => false,
-		'params'  => array()
-	)
-)
+add_action(
+	'init',
+	function() {
+		Asset::addScript(
+			array(
+				'name'    => 'my_script',
+				'url'     => YOUR_PLUGIN_URL . 'assets/js/script.js',
+				'deps'    => array( 'jquery' ),
+				'version' => YOUR_PLUGIN_VERSION,
+				'footer'  => true,
+				'ajax'    => false,
+				'admin'   => false,
+				'params'  => array()
+			)
+		)
 
-Asset::addStyle(
-	array(
-		'name'    => 'my_style',
-		'url'     => YOUR_PLUGIN_URL . 'assets/css/style.css',
-		'version' => YOUR_PLUGIN_VERSION,
-		'deps'    => array(),
-	)
-)
+		Asset::addStyle(
+			array(
+				'name'    => 'my_style',
+				'url'     => YOUR_PLUGIN_URL . 'assets/css/style.css',
+				'version' => YOUR_PLUGIN_VERSION,
+				'deps'    => array(),
+			)
+		)
+	}
+);
 ```
+
+It is important that call object in the hook of init or WordPress API dosen't work.
 
 <br>
 
